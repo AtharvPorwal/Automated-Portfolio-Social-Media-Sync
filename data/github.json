@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-18T19:54:03.668771+00:00",
+  "last_updated": "2026-08-18T20:46:33.733462+00:00",
   "github_username": "AtharvPorwal",
   "profile": {
     "name": "Atharv Porwal",
@@ -7,7 +7,7 @@
     "bio": "🖐 Howdy, fellow coders and tech enthusiasts! I'm Atharv Porwal , an aspiring B.tech Student with a passion for turning lines of code into meaningful innovation",
     "avatar_url": "https://avatars.githubusercontent.com/u/117600949?v=4",
     "html_url": "https://github.com/AtharvPorwal",
-    "public_repos": 24,
+    "public_repos": 20,
     "followers": 2,
     "following": 5,
     "location": "Pune",
@@ -20,7 +20,7 @@
     "total_stars": 0,
     "total_forks": 0,
     "languages_used": {
-      "HTML": 5,
+      "HTML": 4,
       "Python": 3,
       "JavaScript": 3,
       "CSS": 2,
@@ -29,6 +29,26 @@
     }
   },
   "repos": [
+    {
+      "name": "Automated-Portfolio-Social-Media-Sync",
+      "description": "No description provided.",
+      "url": "https://github.com/AtharvPorwal/Automated-Portfolio-Social-Media-Sync",
+      "homepage": null,
+      "language": null,
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "open_issues": 0,
+      "topics": [],
+      "is_fork": false,
+      "created_at": "2026-08-18T20:44:22Z",
+      "updated_at": "2026-08-18T20:44:23Z",
+      "pushed_at": "2026-08-18T20:46:21Z",
+      "size_kb": 0,
+      "default_branch": "main",
+      "license": "",
+      "languages": {}
+    },
     {
       "name": "clue-crew",
       "description": "Fun Friday team guessing game with an interactive Code Lab.",
@@ -231,28 +251,6 @@
       "license": "",
       "languages": {
         "Python": 100.0
-      }
-    },
-    {
-      "name": "test",
-      "description": "No description provided.",
-      "url": "https://github.com/AtharvPorwal/test",
-      "homepage": null,
-      "language": "HTML",
-      "stars": 0,
-      "forks": 0,
-      "watchers": 0,
-      "open_issues": 0,
-      "topics": [],
-      "is_fork": false,
-      "created_at": "2024-03-12T17:44:15Z",
-      "updated_at": "2024-03-12T17:46:19Z",
-      "pushed_at": "2024-03-12T18:55:23Z",
-      "size_kb": 2,
-      "default_branch": "main",
-      "license": "",
-      "languages": {
-        "HTML": 100.0
       }
     },
     {
