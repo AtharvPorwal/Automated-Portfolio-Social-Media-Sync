@@ -1,0 +1,6 @@
+# No external dependencies needed!
+# All scripts use Python's built-in standard library:
+#   - json, urllib, pathlib, datetime, os, sys
+#
+# This file exists so GitHub Actions' pip install doesn't fail.
+# Add dependencies here if needed in the future.

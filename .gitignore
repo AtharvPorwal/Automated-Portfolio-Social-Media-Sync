@@ -1,0 +1,23 @@
+# data/
+# Auto-generated JSON files (committed by the bot)
+!data/social_posts.json
+data/verification_report.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,63 @@
+name: Verify Portfolio Posts
+
+on:
+  # Run automatically after the Sync workflow completes
+  workflow_run:
+    workflows: ["Sync Social & GitHub Data"]
+    types: [completed]
+
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      site_url:
+        description: 'Live site URL to verify (e.g., https://yourusername.vercel.app)'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    # Only run if the sync workflow succeeded (or if manually triggered)
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Ensure we get the latest data (sync workflow may have just pushed)
+          ref: main
+
+      - name: Pull latest changes
+        run: git pull origin main
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Wait for deployment to propagate
+        run: |
+          echo "Waiting 60 seconds for deployment to propagate..."
+          sleep 60
+
+      - name: Run verification
+        env:
+          SITE_URL: ${{ inputs.site_url || secrets.SITE_URL || '' }}
+        run: python scripts/verify_posts.py
+
+      - name: Upload verification report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verification-report
+          path: data/verification_report.json
+          retention-days: 30
