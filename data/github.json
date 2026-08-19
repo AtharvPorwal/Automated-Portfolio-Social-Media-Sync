@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-18T20:46:33.733462+00:00",
+  "last_updated": "2026-08-19T01:12:49.552619+00:00",
   "github_username": "AtharvPorwal",
   "profile": {
     "name": "Atharv Porwal",
@@ -20,8 +20,8 @@
     "total_stars": 0,
     "total_forks": 0,
     "languages_used": {
+      "Python": 4,
       "HTML": 4,
-      "Python": 3,
       "JavaScript": 3,
       "CSS": 2,
       "TypeScript": 1,
@@ -34,7 +34,7 @@
       "description": "No description provided.",
       "url": "https://github.com/AtharvPorwal/Automated-Portfolio-Social-Media-Sync",
       "homepage": null,
-      "language": null,
+      "language": "Python",
       "stars": 0,
       "forks": 0,
       "watchers": 0,
@@ -42,12 +42,14 @@
       "topics": [],
       "is_fork": false,
       "created_at": "2026-08-18T20:44:22Z",
-      "updated_at": "2026-08-18T20:44:23Z",
-      "pushed_at": "2026-08-18T20:46:21Z",
-      "size_kb": 0,
+      "updated_at": "2026-08-18T20:46:52Z",
+      "pushed_at": "2026-08-18T20:46:34Z",
+      "size_kb": 17,
       "default_branch": "main",
       "license": "",
-      "languages": {}
+      "languages": {
+        "Python": 100.0
+      }
     },
     {
       "name": "clue-crew",
