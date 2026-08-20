@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Link Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        /* Setup Section */
+        .setup-card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .setup-card h2 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .setup-card p {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: #aaa;
+            margin-bottom: 6px;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 10px 14px;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            border-color: #4a9eff;
+        }
+
+        .input-group input::placeholder {
+            color: #555;
+        }
+
+        .input-group select option {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #4a9eff;
+            color: #fff;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-primary:hover {
+            background: #3a8eef;
+        }
+
+        .btn-primary:disabled {
+            background: #333;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+            background: #2a2a2a;
+            color: #aaa;
+            border: 1px solid #333;
+        }
+
+        .btn-small:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background: #ff4a4a;
+            color: #fff;
+            padding: 4px 10px;
+            font-size: 11px;
+        }
+
+        .btn-danger:hover {
+            background: #e03a3a;
+        }
+
+        /* Add Post Form */
+        .add-card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .add-card h2 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .platform-selector {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .platform-btn {
+            flex: 1;
+            padding: 12px;
+            background: #111;
+            border: 2px solid #333;
+            border-radius: 8px;
+            color: #aaa;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .platform-btn:hover {
+            border-color: #555;
+            color: #fff;
+        }
+
+        .platform-btn.active {
+            border-color: #4a9eff;
+            color: #4a9eff;
+            background: rgba(74, 158, 255, 0.08);
+        }
+
+        .platform-btn .icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        /* Status Messages */
+        .status {
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-top: 16px;
+            display: none;
+            line-height: 1.4;
+        }
+
+        .status.success {
+            display: block;
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            color: #4ade80;
+        }
+
+        .status.error {
+            display: block;
+            background: rgba(255, 74, 74, 0.1);
+            border: 1px solid rgba(255, 74, 74, 0.3);
+            color: #ff6b6b;
+        }
+
+        .status.loading {
+            display: block;
+            background: rgba(74, 158, 255, 0.1);
+            border: 1px solid rgba(74, 158, 255, 0.3);
+            color: #4a9eff;
+        }
+
+        /* Existing Posts List */
+        .posts-card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .posts-card h2 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+
+        .posts-count {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 16px;
+        }
+
+        .post-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #111;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: border-color 0.2s;
+        }
+
+        .post-item:hover {
+            border-color: #444;
+        }
+
+        .post-platform {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .post-platform.twitter {
+            background: rgba(29, 161, 242, 0.15);
+            color: #1da1f2;
+        }
+
+        .post-platform.linkedin {
+            background: rgba(0, 119, 181, 0.15);
+            color: #0077b5;
+        }
+
+        .post-url {
+            flex: 1;
+            font-size: 13px;
+            color: #aaa;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .post-url a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .post-url a:hover {
+            color: #4a9eff;
+        }
+
+        .post-date {
+            font-size: 11px;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 32px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* Hidden state */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Connection indicator */
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        .connection-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #333;
+        }
+
+        .connection-dot.connected {
+            background: #4ade80;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        /* Spinner */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid #4a9eff;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Portfolio Link Manager</h1>
+        <p class="subtitle">Add your X and LinkedIn posts to your portfolio</p>
+
+        <div class="connection-status">
+            <div class="connection-dot" id="connectionDot"></div>
+            <span id="connectionText">Not connected</span>
+        </div>
+
+        <!-- Setup Section (shown only if not configured) -->
+        <div class="setup-card" id="setupSection">
+            <h2>Connect to GitHub</h2>
+            <p>Enter your GitHub Personal Access Token to connect. This is stored only in your browser's local storage — never sent anywhere except GitHub's API.</p>
+
+            <div class="input-group">
+                <label>GitHub Repository</label>
+                <input type="text" id="repoInput" placeholder="AtharvPorwal/Automated-Portfolio-Social-Media-Sync" 
+                       value="AtharvPorwal/Automated-Portfolio-Social-Media-Sync">
+            </div>
+
+            <div class="input-group">
+                <label>Personal Access Token</label>
+                <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+            </div>
+
+            <button class="btn btn-primary" onclick="connectToGitHub()">Connect</button>
+            <div class="status" id="setupStatus"></div>
+        </div>
+
+        <!-- Add Post Section (shown after connection) -->
+        <div class="add-card hidden" id="addSection">
+            <h2>Add a Post</h2>
+
+            <div class="platform-selector">
+                <button class="platform-btn active" id="btnTwitter" onclick="selectPlatform('twitter')">
+                    <div class="icon">&#x1D54F;</div>
+                    X / Twitter
+                </button>
+                <button class="platform-btn" id="btnLinkedin" onclick="selectPlatform('linkedin')">
+                    <div class="icon">in</div>
+                    LinkedIn
+                </button>
+            </div>
+
+            <div class="input-group">
+                <label>Post URL</label>
+                <input type="url" id="postUrlInput" placeholder="https://x.com/AtharvPorwal0/status/..." 
+                       onkeydown="if(event.key==='Enter') addPost()">
+            </div>
+
+            <button class="btn btn-primary" id="addBtn" onclick="addPost()">Add to Portfolio</button>
+            <div class="status" id="addStatus"></div>
+        </div>
+
+        <!-- Existing Posts Section -->
+        <div class="posts-card hidden" id="postsSection">
+            <div class="header-row">
+                <div>
+                    <h2>Your Posts</h2>
+                    <p class="posts-count" id="postsCount">Loading...</p>
+                </div>
+                <button class="btn btn-small" onclick="loadPosts()">Refresh</button>
+            </div>
+            <div id="postsList"></div>
+        </div>
+    </div>
+
+    <script>
+        // === State ===
+        let config = {
+            repo: '',
+            token: '',
+        };
+        let currentPlatform = 'twitter';
+        let currentPosts = [];
+        let currentSha = '';
+
+        // === Initialization ===
+        function init() {
+            // Load saved config from localStorage
+            const saved = localStorage.getItem('portfolio_config');
+            if (saved) {
+                try {
+                    config = JSON.parse(saved);
+                    document.getElementById('repoInput').value = config.repo || '';
+                    document.getElementById('tokenInput').value = config.token || '';
+                    
+                    if (config.repo && config.token) {
+                        verifyConnection();
+                    }
+                } catch (e) {
+                    // Ignore parse errors
+                }
+            }
+        }
+
+        // === GitHub Connection ===
+        async function connectToGitHub() {
+            const repo = document.getElementById('repoInput').value.trim();
+            const token = document.getElementById('tokenInput').value.trim();
+
+            if (!repo || !token) {
+                showStatus('setupStatus', 'Please fill in both fields.', 'error');
+                return;
+            }
+
+            config = { repo, token };
+            showStatus('setupStatus', '<span class="spinner"></span> Connecting to GitHub...', 'loading');
+
+            try {
+                // Test the connection by trying to read the file
+                const response = await githubAPI(`/repos/${repo}/contents/data/social_posts.json`);
+                
+                if (response.ok) {
+                    // Save config
+                    localStorage.setItem('portfolio_config', JSON.stringify(config));
+                    showConnected();
+                    showStatus('setupStatus', 'Connected successfully!', 'success');
+                    await loadPosts();
+                } else if (response.status === 404) {
+                    // File doesn't exist yet — that's fine, we'll create it
+                    localStorage.setItem('portfolio_config', JSON.stringify(config));
+                    showConnected();
+                    showStatus('setupStatus', 'Connected! No posts yet — add your first one below.', 'success');
+                    currentPosts = [];
+                    currentSha = '';
+                    renderPosts();
+                } else if (response.status === 401) {
+                    showStatus('setupStatus', 'Invalid token. Please check your Personal Access Token.', 'error');
+                } else {
+                    const data = await response.json();
+                    showStatus('setupStatus', `Error: ${data.message || 'Unknown error'}`, 'error');
+                }
+            } catch (e) {
+                showStatus('setupStatus', `Connection failed: ${e.message}`, 'error');
+            }
+        }
+
+        async function verifyConnection() {
+            try {
+                const response = await githubAPI(`/repos/${config.repo}/contents/data/social_posts.json`);
+                if (response.ok || response.status === 404) {
+                    showConnected();
+                    await loadPosts();
+                } else {
+                    // Token expired or invalid
+                    showDisconnected();
+                }
+            } catch (e) {
+                showDisconnected();
+            }
+        }
+
+        function showConnected() {
+            document.getElementById('connectionDot').classList.add('connected');
+            document.getElementById('connectionText').textContent = `Connected to ${config.repo}`;
+            document.getElementById('setupSection').classList.add('hidden');
+            document.getElementById('addSection').classList.remove('hidden');
+            document.getElementById('postsSection').classList.remove('hidden');
+        }
+
+        function showDisconnected() {
+            document.getElementById('connectionDot').classList.remove('connected');
+            document.getElementById('connectionText').textContent = 'Not connected';
+            document.getElementById('setupSection').classList.remove('hidden');
+            document.getElementById('addSection').classList.add('hidden');
+            document.getElementById('postsSection').classList.add('hidden');
+        }
+
+        // === GitHub API ===
+        async function githubAPI(path, options = {}) {
+            const url = `https://api.github.com${path}`;
+            return fetch(url, {
+                ...options,
+                headers: {
+                    'Authorization': `token ${config.token}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Content-Type': 'application/json',
+                    ...(options.headers || {}),
+                },
+            });
+        }
+
+        // === Load Posts ===
+        async function loadPosts() {
+            try {
+                const response = await githubAPI(`/repos/${config.repo}/contents/data/social_posts.json`);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    currentSha = data.sha;
+                    const content = atob(data.content.replace(/\n/g, ''));
+                    currentPosts = JSON.parse(content);
+                } else if (response.status === 404) {
+                    currentPosts = [];
+                    currentSha = '';
+                } else {
+                    console.error('Failed to load posts');
+                    currentPosts = [];
+                }
+            } catch (e) {
+                console.error('Error loading posts:', e);
+                currentPosts = [];
+            }
+
+            renderPosts();
+        }
+
+        // === Render Posts ===
+        function renderPosts() {
+            const container = document.getElementById('postsList');
+            const countEl = document.getElementById('postsCount');
+
+            countEl.textContent = `${currentPosts.length} post${currentPosts.length !== 1 ? 's' : ''} added`;
+
+            if (currentPosts.length === 0) {
+                container.innerHTML = '<div class="empty-state">No posts yet. Add your first post above!</div>';
+                return;
+            }
+
+            // Show newest first
+            const sorted = [...currentPosts].reverse();
+            container.innerHTML = sorted.map((post, i) => {
+                const realIndex = currentPosts.length - 1 - i;
+                const platform = post.platform || detectPlatform(post.url);
+                const shortUrl = post.url.length > 55 ? post.url.substring(0, 55) + '...' : post.url;
+
+                return `
+                    <div class="post-item">
+                        <span class="post-platform ${platform}">${platform === 'twitter' ? 'X' : 'LinkedIn'}</span>
+                        <span class="post-url"><a href="${post.url}" target="_blank" rel="noopener">${shortUrl}</a></span>
+                        <span class="post-date">${post.added_on || ''}</span>
+                        <button class="btn btn-danger" onclick="removePost(${realIndex})">Remove</button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // === Add Post ===
+        async function addPost() {
+            const urlInput = document.getElementById('postUrlInput');
+            const url = urlInput.value.trim();
+
+            if (!url) {
+                showStatus('addStatus', 'Please paste a post URL.', 'error');
+                return;
+            }
+
+            // Validate URL format
+            if (!isValidPostUrl(url)) {
+                showStatus('addStatus', 'Please enter a valid X (twitter.com / x.com) or LinkedIn post URL.', 'error');
+                return;
+            }
+
+            // Check for duplicates
+            const normalizedUrl = normalizeUrl(url);
+            if (currentPosts.some(p => normalizeUrl(p.url) === normalizedUrl)) {
+                showStatus('addStatus', 'This post is already in your list.', 'error');
+                return;
+            }
+
+            const platform = currentPlatform || detectPlatform(url);
+            const today = new Date().toISOString().split('T')[0];
+
+            const newPost = {
+                platform: platform,
+                url: url,
+                added_on: today,
+            };
+
+            // Disable button
+            const btn = document.getElementById('addBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner"></span> Adding...';
+            showStatus('addStatus', '<span class="spinner"></span> Committing to GitHub...', 'loading');
+
+            // Add to list
+            const updatedPosts = [...currentPosts, newPost];
+
+            try {
+                await savePosts(updatedPosts, `Add ${platform} post: ${url.substring(0, 60)}`);
+                currentPosts = updatedPosts;
+                renderPosts();
+                urlInput.value = '';
+                showStatus('addStatus', 
+                    'Post added! The automation will process it on the next sync (or you can trigger it manually from GitHub Actions).', 
+                    'success');
+            } catch (e) {
+                showStatus('addStatus', `Failed to save: ${e.message}`, 'error');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Add to Portfolio';
+            }
+        }
+
+        // === Remove Post ===
+        async function removePost(index) {
+            if (!confirm('Remove this post from your portfolio?')) return;
+
+            const updatedPosts = currentPosts.filter((_, i) => i !== index);
+
+            try {
+                await savePosts(updatedPosts, `Remove post: ${currentPosts[index].url.substring(0, 60)}`);
+                currentPosts = updatedPosts;
+                renderPosts();
+            } catch (e) {
+                alert(`Failed to remove: ${e.message}`);
+            }
+        }
+
+        // === Save Posts to GitHub ===
+        async function savePosts(posts, commitMessage) {
+            const content = btoa(unescape(encodeURIComponent(JSON.stringify(posts, null, 2))));
+
+            const body = {
+                message: commitMessage,
+                content: content,
+                branch: 'main',
+            };
+
+            // Include SHA if updating existing file
+            if (currentSha) {
+                body.sha = currentSha;
+            }
+
+            const response = await githubAPI(
+                `/repos/${config.repo}/contents/data/social_posts.json`,
+                { method: 'PUT', body: JSON.stringify(body) }
+            );
+
+            if (!response.ok) {
+                const data = await response.json();
+                
+                // If SHA mismatch (someone else updated), reload and retry
+                if (response.status === 409) {
+                    await loadPosts();
+                    throw new Error('File was updated by another process. Please try again.');
+                }
+                
+                throw new Error(data.message || `HTTP ${response.status}`);
+            }
+
+            const data = await response.json();
+            currentSha = data.content.sha;
+        }
+
+        // === Helpers ===
+        function selectPlatform(platform) {
+            currentPlatform = platform;
+            document.getElementById('btnTwitter').classList.toggle('active', platform === 'twitter');
+            document.getElementById('btnLinkedin').classList.toggle('active', platform === 'linkedin');
+
+            const placeholder = platform === 'twitter'
+                ? 'https://x.com/AtharvPorwal0/status/...'
+                : 'https://www.linkedin.com/posts/atharv-porwal-549526283_...';
+            document.getElementById('postUrlInput').placeholder = placeholder;
+        }
+
+        function detectPlatform(url) {
+            if (url.includes('x.com/') || url.includes('twitter.com/')) return 'twitter';
+            if (url.includes('linkedin.com/')) return 'linkedin';
+            return 'unknown';
+        }
+
+        function normalizeUrl(url) {
+            return url.trim().replace(/\/$/, '')
+                       .replace('twitter.com/', 'x.com/')
+                       .replace('http://', 'https://');
+        }
+
+        function isValidPostUrl(url) {
+            try {
+                const u = new URL(url);
+                return (
+                    (u.hostname === 'x.com' || u.hostname === 'twitter.com' || u.hostname === 'www.x.com') ||
+                    (u.hostname === 'www.linkedin.com' || u.hostname === 'linkedin.com')
+                );
+            } catch {
+                return false;
+            }
+        }
+
+        function showStatus(elementId, message, type) {
+            const el = document.getElementById(elementId);
+            el.innerHTML = message;
+            el.className = `status ${type}`;
+        }
+
+        // Initialize on page load
+        init();
+    </script>
+</body>
+</html>
