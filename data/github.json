@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-20T01:11:30.602556+00:00",
+  "last_updated": "2026-08-21T01:15:39.073422+00:00",
   "github_username": "AtharvPorwal",
   "profile": {
     "name": "Atharv Porwal",
@@ -42,13 +42,14 @@
       "topics": [],
       "is_fork": false,
       "created_at": "2026-08-18T20:44:22Z",
-      "updated_at": "2026-08-19T01:13:06Z",
-      "pushed_at": "2026-08-19T01:12:50Z",
-      "size_kb": 18,
+      "updated_at": "2026-08-20T09:33:24Z",
+      "pushed_at": "2026-08-20T09:31:32Z",
+      "size_kb": 25,
       "default_branch": "main",
       "license": "",
       "languages": {
-        "Python": 100.0
+        "Python": 56.3,
+        "HTML": 43.7
       }
     },
     {
