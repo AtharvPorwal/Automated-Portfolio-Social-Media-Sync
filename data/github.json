@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-07T03:09:21.152103+00:00",
+  "last_updated": "2026-09-08T03:17:58.180028+00:00",
   "github_username": "AtharvPorwal",
   "profile": {
     "name": "Atharv Porwal",
@@ -7,7 +7,7 @@
     "bio": "🖐 Howdy, fellow coders and tech enthusiasts! I'm Atharv Porwal , an aspiring B.tech Student with a passion for turning lines of code into meaningful innovation",
     "avatar_url": "https://avatars.githubusercontent.com/u/117600949?v=4",
     "html_url": "https://github.com/AtharvPorwal",
-    "public_repos": 20,
+    "public_repos": 21,
     "followers": 2,
     "following": 5,
     "location": "Pune",
@@ -16,19 +16,42 @@
     "created_at": "2022-11-06T20:38:19Z"
   },
   "stats": {
-    "total_repos": 19,
+    "total_repos": 20,
     "total_stars": 0,
     "total_forks": 0,
     "languages_used": {
+      "JavaScript": 4,
       "Python": 4,
       "HTML": 4,
-      "JavaScript": 3,
       "CSS": 2,
       "TypeScript": 1,
       "Java": 1
     }
   },
   "repos": [
+    {
+      "name": "Quality-Dashboard",
+      "description": "No description provided.",
+      "url": "https://github.com/AtharvPorwal/Quality-Dashboard",
+      "homepage": null,
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "open_issues": 0,
+      "topics": [],
+      "is_fork": false,
+      "created_at": "2026-09-07T20:53:12Z",
+      "updated_at": "2026-09-07T20:56:16Z",
+      "pushed_at": "2026-09-07T20:56:05Z",
+      "size_kb": 9,
+      "default_branch": "main",
+      "license": "",
+      "languages": {
+        "JavaScript": 94.8,
+        "HTML": 5.2
+      }
+    },
     {
       "name": "Automated-Portfolio-Social-Media-Sync",
       "description": "No description provided.",
@@ -42,9 +65,9 @@
       "topics": [],
       "is_fork": false,
       "created_at": "2026-08-18T20:44:22Z",
-      "updated_at": "2026-09-06T03:11:38Z",
-      "pushed_at": "2026-09-06T03:11:34Z",
-      "size_kb": 37,
+      "updated_at": "2026-09-07T03:09:26Z",
+      "pushed_at": "2026-09-07T03:09:22Z",
+      "size_kb": 38,
       "default_branch": "main",
       "license": "",
       "languages": {
@@ -251,10 +274,7 @@
       "pushed_at": "2024-03-29T20:37:31Z",
       "size_kb": 45970,
       "default_branch": "main",
-      "license": "",
-      "languages": {
-        "Python": 100.0
-      }
+      "license": ""
     },
     {
       "name": "Billing-_System",
