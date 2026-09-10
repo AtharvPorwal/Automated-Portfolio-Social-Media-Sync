@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-09T03:20:53.302852+00:00",
+  "last_updated": "2026-09-10T03:20:00.567221+00:00",
   "github_username": "AtharvPorwal",
   "profile": {
     "name": "Atharv Porwal",
@@ -20,8 +20,8 @@
     "total_stars": 0,
     "total_forks": 0,
     "languages_used": {
-      "JavaScript": 4,
       "Python": 4,
+      "JavaScript": 4,
       "HTML": 4,
       "CSS": 2,
       "TypeScript": 1,
@@ -29,6 +29,29 @@
     }
   },
   "repos": [
+    {
+      "name": "Automated-Portfolio-Social-Media-Sync",
+      "description": "No description provided.",
+      "url": "https://github.com/AtharvPorwal/Automated-Portfolio-Social-Media-Sync",
+      "homepage": null,
+      "language": "Python",
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "open_issues": 0,
+      "topics": [],
+      "is_fork": false,
+      "created_at": "2026-08-18T20:44:22Z",
+      "updated_at": "2026-09-09T03:20:59Z",
+      "pushed_at": "2026-09-09T03:20:54Z",
+      "size_kb": 40,
+      "default_branch": "main",
+      "license": "",
+      "languages": {
+        "Python": 56.3,
+        "HTML": 43.7
+      }
+    },
     {
       "name": "Quality-Dashboard",
       "description": "No description provided.",
@@ -50,29 +73,6 @@
       "languages": {
         "JavaScript": 98.1,
         "HTML": 1.9
-      }
-    },
-    {
-      "name": "Automated-Portfolio-Social-Media-Sync",
-      "description": "No description provided.",
-      "url": "https://github.com/AtharvPorwal/Automated-Portfolio-Social-Media-Sync",
-      "homepage": null,
-      "language": "Python",
-      "stars": 0,
-      "forks": 0,
-      "watchers": 0,
-      "open_issues": 0,
-      "topics": [],
-      "is_fork": false,
-      "created_at": "2026-08-18T20:44:22Z",
-      "updated_at": "2026-09-08T03:18:03Z",
-      "pushed_at": "2026-09-08T03:17:59Z",
-      "size_kb": 39,
-      "default_branch": "main",
-      "license": "",
-      "languages": {
-        "Python": 56.3,
-        "HTML": 43.7
       }
     },
     {
